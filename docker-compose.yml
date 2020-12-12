@@ -1,0 +1,33 @@
+version: "3.7"
+
+services:
+  localdb-postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: localdb
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: B@ndung123
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  localdb-pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@tnc.com
+      PGADMIN_DEFAULT_PASSWORD: B@ndung123
+      PGADMIN_LISTEN_PORT: 2345
+    ports:
+      - "2345:2345"
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    links:
+      - "localdb-postgres:pgsql-server"
+
+volumes:
+  db-data:
+  pgadmin-data:

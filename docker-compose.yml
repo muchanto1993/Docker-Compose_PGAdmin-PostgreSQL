@@ -7,7 +7,7 @@ services:
     environment:
       POSTGRES_DB: localdb
       POSTGRES_USER: admin
-      POSTGRES_PASSWORD: B@ndung123
+      POSTGRES_PASSWORD: admin
       PGDATA: /var/lib/postgresql/data
     volumes:
       - db-data:/var/lib/postgresql/data
@@ -18,8 +18,8 @@ services:
     image: dpage/pgadmin4
     restart: always
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@tnc.com
-      PGADMIN_DEFAULT_PASSWORD: B@ndung123
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
       PGADMIN_LISTEN_PORT: 2345
     ports:
       - "2345:2345"
